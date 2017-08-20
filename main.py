@@ -24,21 +24,21 @@ def display_main():
 
 @route("/diary", method="post")
 def save():
-    req = __parse_request()
-    comment = __awk_comment(req["comment"])
-    __write_file(comment)
-    __write_log()
+    req = _parse_request()
+    comment = _awk_comment(req["comment"])
+    _write_file(comment)
+    _write_log()
     return template("./views/diary.tpl",
                     messages=["投稿完了!!"]
                     )
 
-def __parse_request():
+def _parse_request():
     req = {}
     for k, v in request.forms.items():
         req[k] = v
     return req
 
-def __write_file(comment):
+def _write_file(comment):
     today = date.today()
     name = today.strftime("%Y%m%d")
     full_path = os.path.join(config.SAVE_DIR, name)
@@ -46,13 +46,13 @@ def __write_file(comment):
         print comment
         f.write(comment)
 
-def __awk_comment(comment):
+def _awk_comment(comment):
     now = datetime.now().strftime("%Y%m%d%H%M%S")
     cast_comment = "{header}\n{body}\n\n".format(header=now,
                                                body=comment)
     return cast_comment
 
-def __write_log():
+def _write_log():
     log_path = os.path.join(config.LOG_DIR, "submit.log")
     logging.basicConfig(filename=log_path,
                         level=logging.DEBUG,
