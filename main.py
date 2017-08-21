@@ -14,7 +14,9 @@ from bottle import route
 from bottle import run
 from bottle import request
 from bottle import template
-import config
+
+SAVE_DIR = os.path.join(os.path.dirname(__file__), 'save')
+LOG_DIR = os.path.join(os.path.dirname(__file__), 'log')
 
 @route("/diary")
 def display_main():
@@ -41,7 +43,7 @@ def _parse_request():
 def _write_file(comment):
     today = date.today()
     name = today.strftime("%Y%m%d")
-    full_path = os.path.join(config.SAVE_DIR, name)
+    full_path = os.path.join(SAVE_DIR, name)
     with open(full_path, "a") as f:
         print comment
         f.write(comment)
@@ -53,7 +55,7 @@ def _awk_comment(comment):
     return cast_comment
 
 def _write_log():
-    log_path = os.path.join(config.LOG_DIR, "submit.log")
+    log_path = os.path.join(LOG_DIR, "submit.log")
     logging.basicConfig(filename=log_path,
                         level=logging.DEBUG,
                         format="%(asctime)s:%(message)s")
