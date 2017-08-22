@@ -7,7 +7,7 @@ This is the simple diary which can run local PC.
 After you clone and move into this repository, you create virtualenv with Python2.7 like this.  
 
 ```sh
-mkeri venv
+mkdir venv
 virtualenv --no-site-packages venv
 source venv/bin/activate
 ```
