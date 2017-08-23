@@ -27,7 +27,7 @@ python main.py
 You can access with `http://localhost:8080/diary`.  
 The diary data are recorded in `save` directory.  
 
-![Screen Shot](https://raw.githubusercontent.com/pyohei/simple-diary/master/screenshot.png)
+![Screen Shot](https://github.com/pyohei/simple-diary/blob/master/screenshot.png)
 
 ## Licence
 
