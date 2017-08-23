@@ -27,6 +27,8 @@ python main.py
 You can access with `http://localhost:8080/diary`.  
 The diary data are recorded in `save` directory.  
 
+![Screen Shot](screenshot.png)
+
 ## Licence
 
 * MIT
